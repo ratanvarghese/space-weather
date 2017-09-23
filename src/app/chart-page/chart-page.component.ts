@@ -12,15 +12,13 @@ export class ChartPageComponent implements OnInit {
   label: string;
   loading = true;
   somethingValid = false;
-  options: any = {
-    legend: {
-      display: false
-    }
-  }
-
+  options: any;
+  
   constructor(private wind: WindService) {}
 
   ngOnInit(): void {
+    this.setOptions();
+
     this.wind.getDataEveryMinute(x => {
       let rawData = x.filter(d => d.valid);
       this.somethingValid = rawData.length > 0;
@@ -35,6 +33,30 @@ export class ChartPageComponent implements OnInit {
       }
       this.loading = false;
     });
+  }
+
+  setOptions(): void {
+    this.options = {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: `${this.label} over time`
+      },
+      scales: {
+        yAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: this.label
+          }
+        }],
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: "UTC Time (hh:mm)"
+          }
+        }]
+      }
+    }
   }
 }
 
