@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
+
 
 import { ChartModule } from 'angular2-chartjs';
 
@@ -13,6 +15,13 @@ import {
   IonTemperaturePageComponent
 } from './chart-page/chart-page.component';
 
+const appRoutes: Routes = [
+  { path: 'speed', component: BulkSpeedPageComponent },
+  { path: 'density', component: ProtonDensityPageComponent },
+  { path: 'temp', component: IonTemperaturePageComponent },
+  { path: '', redirectTo: '/speed', pathMatch: 'full' },
+  { path: '**', redirectTo: '/speed' }
+]
 
 @NgModule({
   declarations: [
@@ -25,7 +34,8 @@ import {
   imports: [
     BrowserModule,
     HttpModule,
-    ChartModule
+    ChartModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [WindService],
   bootstrap: [AppComponent]

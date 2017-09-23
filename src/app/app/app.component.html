@@ -2,6 +2,9 @@
 Welcome to {{title}}!!
 </h1>
 
-<bulk-speed-page></bulk-speed-page>
-<proton-density-page></proton-density-page>
-<ion-temperature-page></ion-temperature-page>
+<nav>
+    <a routerLink="/speed" routerLinkActive="active">Bulk Speed</a>
+    <a routerLink="/density" routerLinkActive="active">Proton Density</a>
+    <a routerLink="/temp" routerLinkActive="active">Ion Temperature</a>
+</nav>
+<router-outlet></router-outlet>
