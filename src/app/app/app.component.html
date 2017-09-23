@@ -2,8 +2,12 @@
 Welcome to {{title}}!!
 </h1>
 
+<div *ngIf="chartData">
+  <chart type="line" [data]="chartData"></chart>
+</div>
+
 <ul>
-    <li *ngFor="let datum of data">
+    <li *ngFor="let datum of rawData">
         {{datum.date}}<br />
         {{datum.bulkSpeed}}<br />
     </li>

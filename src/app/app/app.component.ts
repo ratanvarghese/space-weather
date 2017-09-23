@@ -8,11 +8,23 @@ import { WindService, WindDatum } from '../wind/wind.service';
 })
 export class AppComponent implements OnInit {
   title = 'Solar';
-  data: WindDatum[] = [];
+  rawData: WindDatum[] = [];
+  chartData: any;
 
   constructor(private wind: WindService) {}
 
   ngOnInit(): void {
-    this.wind.getData(x => this.data = x);
+    this.wind.getData(x => {
+      this.rawData = x;
+      this.chartData = {
+        labels: this.rawData.map(d => `${d.date.getHours()}:${d.date.getMinutes()}`),
+        datasets: [
+          {
+            label: "My first dataset",
+            data: this.rawData.map(d => d.bulkSpeed)
+          }
+        ]
+      }
+    });
   }
 }
