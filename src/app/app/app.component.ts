@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WindService } from '../wind/wind.service';
+import { WindService, WindDatum } from '../wind/wind.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,11 @@ import { WindService } from '../wind/wind.service';
 })
 export class AppComponent implements OnInit {
   title = 'Solar';
+  data: WindDatum[] = [];
 
   constructor(private wind: WindService) {}
 
   ngOnInit(): void {
-    this.wind.getData();
+    this.wind.getData(x => this.data = x);
   }
 }

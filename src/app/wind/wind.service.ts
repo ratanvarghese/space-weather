@@ -38,13 +38,16 @@ export class WindService {
 
     constructor(private http: Http) {}
 
-    getData() {
+    public getData(handler?: (x: WindDatum[]) => void): void {
+        if(!handler)
+            handler = (x: WindDatum[]) => console.dir(x);
+
         this.http.get(this.windURL)
                  .map(response => response.text())
                  .map(response => response.split("\n"))
                  .map(response => response.filter(x => !x.startsWith("#") && !x.startsWith(":")))
                  .map(response => response.filter(x => x.length > 0))
                  .map(response => response.map(x => new WindDatum(x)))
-                 .subscribe(response => console.dir(response));
+                 .subscribe(response => handler(response));
     }
 }
