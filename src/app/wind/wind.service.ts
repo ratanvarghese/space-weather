@@ -29,6 +29,12 @@ export class WindDatum {
         this.bulkSpeed = Number(splitLine[8]);
         this.ionTemperature = Number(splitLine[9]);
     }
+
+    get utcTime(): string {
+        let hour = ('00' + this.date.getHours().toString()).slice(-2);
+        let minute = ('00' + this.date.getMinutes().toString()).slice(-2);
+        return `${hour}:${minute}`
+    }
 }
 
 @Injectable()

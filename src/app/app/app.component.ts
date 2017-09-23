@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
       this.rawData = x.filter(d => d.valid);
       this.somethingValid = this.rawData.length > 0;
       this.chartData = {
-        labels: this.rawData.map(d => `${d.date.getHours()}:${d.date.getMinutes()}`),
+        labels: this.rawData.map(d => d.utcTime),
         datasets: [
           {
             label: "Bulk Speed (km/s)",
