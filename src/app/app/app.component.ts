@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WindService } from '../wind/wind.service';
 import { WindDatum } from '../wind/wind-datum';
 
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   constructor(private wind: WindService) {}
 
   ngOnInit(): void {
-    this.wind.getData(x => {
+    this.wind.getDataEveryMinute(x => {
       this.rawData = x.filter(d => d.valid);
       this.somethingValid = this.rawData.length > 0;
       this.chartData = {
