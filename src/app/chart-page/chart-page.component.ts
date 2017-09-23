@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WindService } from '../wind/wind.service';
 import { WindDatum } from '../wind/wind-datum';
 
@@ -6,13 +6,15 @@ import { WindDatum } from '../wind/wind-datum';
   selector: 'chart-page',
   templateUrl: './chart-page.component.html'
 })
-export class ChartPageComponent implements OnInit {
+export class ChartPageComponent implements OnInit, OnDestroy {
   chartData: any;
   field: string;
   label: string;
   loading = true;
   somethingValid = false;
   options: any;
+
+  alive = true;
   
   constructor(private wind: WindService) {}
 
@@ -32,7 +34,11 @@ export class ChartPageComponent implements OnInit {
         ]
       }
       this.loading = false;
-    });
+    }, () => this.alive);
+  }
+
+  ngOnDestroy(): void {
+    this.alive = false;
   }
 
   setOptions(): void {

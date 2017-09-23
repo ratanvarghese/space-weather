@@ -28,8 +28,8 @@ export class WindService {
                  .map(response => response.map(x => new WindDatum(x)))
     }
 
-    public getDataEveryMinute(handler: (x: WindDatum[]) => void) {
+    public getDataEveryMinute(handler: (x: WindDatum[]) => void, keepTaking: () => boolean) {
         this.getData().first().subscribe(x => handler(x));
-        this.dataEveryMinute.subscribe(ob => ob.first().subscribe(x => handler(x)));
+        this.dataEveryMinute.takeWhile(() => keepTaking()).subscribe(ob => ob.first().subscribe(x => handler(x)));
     } 
 }
