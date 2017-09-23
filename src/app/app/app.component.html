@@ -13,10 +13,3 @@ Welcome to {{title}}!!
 <div *ngIf="!loading && !somethingValid">
   There is no valid data from the NOAA at this time. Please try again in a few hours.
 </div>
-
-<ul>
-    <li *ngFor="let datum of rawData">
-        {{datum.date}}<br />
-        {{datum.bulkSpeed}}<br />
-    </li>
-</ul>
