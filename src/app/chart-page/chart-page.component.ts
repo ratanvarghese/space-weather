@@ -46,3 +46,21 @@ export class BulkSpeedPageComponent extends ChartPageComponent {
   field = "bulkSpeed";
   label = "Bulk Speed (km/s)";
 }
+
+@Component({
+  selector: 'proton-density-page',
+  templateUrl: './chart-page.component.html'
+})
+export class ProtonDensityPageComponent extends ChartPageComponent {
+  field = "protonDensity";
+  label = "Proton Density (p/cc)";
+}
+
+@Component({
+  selector: 'ion-temperature-page',
+  templateUrl: './chart-page.component.html'
+})
+export class IonTemperaturePageComponent extends ChartPageComponent {
+  field = "ionTemperature";
+  label = "Ion Temperature (Kelvin)";
+}
