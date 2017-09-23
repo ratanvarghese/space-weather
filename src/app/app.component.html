@@ -1,0 +1,22 @@
+<div class="text-center">
+<h1>Space Weather Monitor</h1>
+<h4>Application by Ratan Varghese</h4>
+<h4>Data from the National Oceanic and Atmospheric Administration</h4>
+</div>
+<nav>
+    <ul>
+    <li><a routerLink="/speed" routerLinkActive="active">Bulk Speed</a></li>
+    <li><a routerLink="/density" routerLinkActive="active">Proton Density</a></li>
+    <li><a routerLink="/temp" routerLinkActive="active">Ion Temperature</a></li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>
+
+<p>The area between the Sun and Earth is not an unchanging void. That environment is constantly changing: these changes are called <strong>space weather</strong>.</p>
+
+<p>The National Oceanic and Atmospheric Administration (NOAA) provides minute-by-minute data on space weather, although not during all times of day. The raw data used for this app is available <a href="http://services.swpc.noaa.gov/text/ace-epam.txt">here</a>.</p>
+
+<p>These graphs update every minute. Invalid data entries are omitted.</p>
+
+<p><a href="http://www.swpc.noaa.gov/">NOAA Homepage</a></p>
+<p><a href="http://www.ratan.blog/">Ratan Varghese</a></p>

@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ChartModule } from 'angular2-chartjs';
 
-import { AppComponent } from './app/app.component';
+import { AppComponent } from './app.component';
 import { WindService } from './wind/wind.service';
 import {
   ChartPageComponent,
