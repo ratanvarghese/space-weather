@@ -6,10 +6,14 @@ import { ChartModule } from 'angular2-chartjs';
 
 import { AppComponent } from './app/app.component';
 import { WindService } from './wind/wind.service';
+import { ChartPageComponent, BulkSpeedPageComponent } from './chart-page/chart-page.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChartPageComponent,
+    BulkSpeedPageComponent
   ],
   imports: [
     BrowserModule,

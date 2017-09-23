@@ -1,0 +1,11 @@
+<div *ngIf="!loading">
+  <chart type="line" [data]="chartData" [options]="options"></chart>
+</div>
+
+<div *ngIf="loading">
+  Loading data...
+</div>
+
+<div *ngIf="!loading && !somethingValid">
+  There is no valid data from the NOAA at this time. Please try again in a few hours.
+</div>

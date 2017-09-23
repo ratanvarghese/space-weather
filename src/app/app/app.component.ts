@@ -1,40 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { WindService } from '../wind/wind.service';
-import { WindDatum } from '../wind/wind-datum';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Solar';
-  somethingValid = false;
-  loading = true;
-  rawData: WindDatum[] = [];
-  chartData: any;
-  options: any = {
-    legend: {
-      display: false
-    }
-  }
-
-  constructor(private wind: WindService) {}
-
-  ngOnInit(): void {
-    this.wind.getDataEveryMinute(x => {
-      this.rawData = x.filter(d => d.valid);
-      this.somethingValid = this.rawData.length > 0;
-      this.chartData = {
-        labels: this.rawData.map(d => d.utcTime),
-        datasets: [
-          {
-            label: "Bulk Speed (km/s)",
-            data: this.rawData.map(d => d.bulkSpeed)
-          }
-        ]
-      }
-      this.loading = false;
-    });
-  }
 }
