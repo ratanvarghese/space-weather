@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WindService, WindDatum } from '../wind/wind.service';
+import { WindService } from '../wind/wind.service';
+import { WindDatum } from '../wind/wind-datum';
 
 @Component({
   selector: 'app-root',
